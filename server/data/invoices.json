@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Test Co",
+    "email": "test@test.co",
+    "dueDate": "01/01/2020",
+    "lineItems": [{ "description": "Test invoice line item 1", "amount": 100 }],
+    "id": 0
+  },
+  {
+    "id": 1,
+    "name": "Nick Primuth",
+    "email": "nbprimuth@gmail.com",
+    "dueDate": "23",
+    "lineItems": [{ "description": "", "amount": 0 }]
+  },
+  {
+    "id": 2,
+    "name": "adsfasdf asdfsd",
+    "email": "sdfsdfsdf",
+    "dueDate": "13",
+    "lineItems": [{ "description": "", "amount": 0 }]
+  }
+]
