@@ -1,7 +1,6 @@
 // Import Local Invoice DB
 const fileName = '../data/invoices.json';
 const fs = require('fs');
-const data = require(fileName);
 const path = require('path');
 
 const invoiceController = {};
@@ -24,8 +23,6 @@ invoiceController.getCurrentInvoice = (req, res, next) => {
 
   // Set id of invoice
   const id = req.params.id;
-
-  console.log(currentInvoices, 'current', id, 'id');
 
   // Set currentInvoice and send
   res.locals.currentInvoice = currentInvoices[id];
@@ -53,11 +50,11 @@ invoiceController.addInvoice = (req, res, next) => {
       if (err) {
         console.log(err);
       }
-      console.log(`Added invoice! Total inv ${currentInvoices}`);
+      res.locals.newInvoices = currentInvoices;
+      console.log(`Added invoice! Total inv ${res.locals.newInvoices}`);
+      return next();
     }
   );
-
-  return next();
 };
 
 invoiceController.editInvoice = (req, res, next) => {
@@ -69,7 +66,6 @@ invoiceController.editInvoice = (req, res, next) => {
 
   // Insert edited invoice
   currentInvoices[id] = req.body;
-  console.log(currentInvoices, 'updated list!');
   fs.writeFile(
     path.resolve(__dirname, fileName),
     JSON.stringify(currentInvoices),
@@ -77,12 +73,13 @@ invoiceController.editInvoice = (req, res, next) => {
     (err) => {
       if (err) {
         console.log(err);
+        next();
       }
-      console.log(`Edited invoice! Total inv ${currentInvoices}`);
+      res.locals.editedInvoices = currentInvoices;
+      console.log(`Edited invoice! Total inv `, res.locals.editedInvoices);
+      return next();
     }
   );
-
-  return next();
 };
 
 invoiceController.deleteInvoice = (req, res, next) => {
@@ -112,12 +109,14 @@ invoiceController.deleteInvoice = (req, res, next) => {
       if (err) {
         console.log(err);
       }
+      res.locals.invoices = newInvoiceArray;
       console.log(
-        `Removed invoice ${id}! Current invoice list ${newInvoiceArray}`
+        `Removed invoice ${id}! Current invoice list ${res.locals.invoices}`
       );
+
+      return next();
     }
   );
-  return next();
 };
 
 module.exports = invoiceController;
