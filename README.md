@@ -12,10 +12,8 @@ It will be available on localhost:3000.
 
 ### Material UI
 
-I choose to use the Material UI component library for customizable responsiveness, accessibility, clean interface, and helpful date picker integration.
+I choose to use the Material UI component library for customizable responsiveness, accessibility, clean interface, and the helpful date picker integration.
 
 ### Formik
 
 Formik was chosen for the robust state management and error handling sysytem.
-
-### Date
