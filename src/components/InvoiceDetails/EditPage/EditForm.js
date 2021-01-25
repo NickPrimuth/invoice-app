@@ -170,7 +170,7 @@ const EditForm = ({ invoices, setInvoices, redirect, handleRedirect }) => {
                           if (minLineItem) setMinLineItem(false);
                           arrayHelpers.push({
                             description: '',
-                            amount: 0.0,
+                            amount: null,
                           });
                         }}
                       >

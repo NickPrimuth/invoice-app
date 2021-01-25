@@ -29,7 +29,7 @@ const CreateForm = ({ setInvoices, handleRedirect, redirect }) => {
         lineItems: [
           {
             description: '',
-            amount: 0.0,
+            amount: null,
           },
         ],
       }}
@@ -140,7 +140,7 @@ const CreateForm = ({ setInvoices, handleRedirect, redirect }) => {
                           if (minLineItem) setMinLineItem(false);
                           arrayHelpers.push({
                             description: '',
-                            amount: 0.0,
+                            amount: null,
                           });
                         }}
                       >
